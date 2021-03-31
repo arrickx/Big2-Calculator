@@ -5,7 +5,7 @@ Calculate the score and amount for a card game named BigD
 - Notice the player to play one more round if two or more people have the same score.
 
 ### Getting Started
-* You can *[clone](TODO)* or *[download](TODO)* this project via [GitHub](https://github.com) to your local machine.
+* You can *[clone](https://github.com/arrickx/BigD-Calculator)* or *[download](https://github.com/arrickx/BigD-Calculator)* this project via [GitHub](https://github.com) to your local machine.
 * Download and Install *[python](https://www.python.org/downloads/)* to your local machine.
 
 ### How to use
