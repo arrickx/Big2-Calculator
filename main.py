@@ -37,34 +37,33 @@ def bigD():
                   reset(3,"Negative number not alllowed. \nPlease try again. \n")
                   break
                 else:
-                    # if any player has the same score, notice the user and restart program
-                    if any(score.count(element) > 1 for element in score) == True:
-                      reset(3,"Two or more player got the same scores. \nPlease play one more rount then try again. \n")
-                      break
-                    else:
-                      # Find the min number
-                      m = min(score)
-                      # Deduct all the number by the min number
-                      score = [x  - m for x in score]
-                      # Sort the number into ascending  order
-                      score.sort()
-                      a,b,c,d = score
-                      # Calculate the win/loss amounts for the players
-                      first = sum(score)
-                      second = d-b+c-b-b
-                      third = c+c-d-b+c
-                      fourth = d+d-b+d-c
-                      # Find out the amount they play
-                      price = float(input("\nHow much do you guys play?\ni.e., 0.25\n"))
-                      # if any price is negative, notice the user and restart program
-                      if price <= 0:
-                        reset(3,"Negative number or zero not alllowed. \nPlease try again. \n")
-                        break
-                      else:
-                        print("\nTop player win $%s" %(str(round(first*price, 2))))
-                        print("Second player win $%s" %(str(round(second*price, 2))))
-                        print("Third player lose $%s" %(str(round(third*price, 2))))
-                        print("Fourth player lose $%s\n" %(str(round(fourth*price, 2))))
-                        break
+                  # Find the min number
+                  m = min(score)
+                  # Deduct all the number by the min number
+                  score = [x  - m for x in score]
+                  # Sort the number into ascending  order
+                  score.sort()
+                  a,b,c,d = score
+                  # Calculate the win/loss amounts for the players. Update the staus of second and third ranking player based on their score
+                  first = sum(score)
+                  second = -3*b+c+d
+                  secondOutcome = "lose" if second<0 else "win"
+                  second = -second if second<0 else second
+                  third = -b+3*c-d
+                  thirdOutcome = "win" if third<0 else "lose"
+                  third = -third if third<0 else third
+                  fourth = -b-c+3*d
+                  # Find out the amount they play
+                  price = float(input("\nHow much do you guys play?\ni.e., 0.25\n"))
+                  # if any price is negative, notice the user and restart program
+                  if price <= 0:
+                    reset(3,"Negative number or zero not alllowed. \nPlease try again. \n")
+                    break
+                  else:
+                    print("\nTop player win $%s" %(str(round(first*price, 2))))
+                    print("Second player %s $%s" %(secondOutcome, str(round(second*price, 2))))
+                    print("Third player %s $%s" %(thirdOutcome, str(round(third*price, 2))))
+                    print("Fourth player lose $%s\n" %(str(round(fourth*price, 2))))
+                    break
 while True:
   bigD()
