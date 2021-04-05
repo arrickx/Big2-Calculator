@@ -3,12 +3,8 @@ from time import sleep
 
 # define our clear function
 def clear():
-    # for windows
-    if name == 'nt':
-        _ = system('cls')
-    # for mac and linux(here, os.name is 'posix')
-    else:
-        _ = system('clear')
+    # for windows use 'cls' else use 'clear'
+    system('cls') if name == 'nt' else system('clear')
 
 # define the reset function that can show up the message then restart this app
 def reset(sec,text):
